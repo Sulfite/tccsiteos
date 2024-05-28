@@ -1,0 +1,13 @@
+.buttonEnd {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.cardOS {
+    margin-bottom: 1rem;
+}
+
+.headerSidebar {
+    text-decoration: none;
+}
