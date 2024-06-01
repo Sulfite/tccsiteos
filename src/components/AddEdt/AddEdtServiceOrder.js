@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react'
 import {
   CAlert,
   CButton,
-  CCard,
   CCardBody,
   CCol,
-  CContainer,
   CForm,
   CFormInput,
   CFormSelect,
@@ -26,14 +24,6 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import {
-  cilBook,
-  cilCalendar,
-  cilCircle,
-  cilClosedCaptioning,
-  cilDelete,
-  cilLockLocked,
-  cilPen,
-  cilUser,
   cilXCircle,
 } from '@coreui/icons'
 import { useNavigate } from 'react-router-dom'
@@ -47,6 +37,7 @@ import {
   reqInsertOrderService,
   reqPutOrderService,
 } from '../../api/servicesOrdersApi'
+import { useSelector } from 'react-redux'
 
 export const ServiceOrderAddEdt = (props) => {
   const initialForm = {
@@ -85,7 +76,7 @@ export const ServiceOrderAddEdt = (props) => {
   //  1 - Add
   //  2 - edt
 
-  const nav = useNavigate()
+  const navigate = useNavigate()
   const [form, setForm] = useState(initialForm)
   const [formProduct, setFormProduct] = useState(initialFormProdut)
 
@@ -111,22 +102,13 @@ export const ServiceOrderAddEdt = (props) => {
 
   const initialOptionsProducts = [{ label: 'Selecione um Produto', value: '', price: 0.0 }]
   const [optionsProduct, setOptionsProduct] = useState(initialOptionsProducts)
-
-  const [readonly, setReadOnly] = useState(false)
-
   const [productsAdd, setProductsAdd] = useState([])
-
-  const [typeAccessP, setTypeAccessP] = useState(2)
+  
+  const [readonly, setReadOnly] = useState(false)
+  const currentUser = useSelector((state) => state.userReducer.currentUser)  
+  const [typeAccessP, setTypeAccessP] = useState(currentUser.accessType)
 
   useEffect(() => {
-    // const returnEquipment = reqGetEquipments()
-    // returnEquipment.then((response) => {
-    //   const newArray = response.map((value) => {
-    //     return { label: value.Name_Equipment, value: value.ID_Equipment }
-    //   })
-    //   setOptionsIdEquipment([...initialOptionsEquipments, ...newArray])
-    // })
-
     const returnListTypesServices = reqGetTypesServices()
     returnListTypesServices.then((response) => {
       const newArray = response.map((value) => {
@@ -225,9 +207,9 @@ export const ServiceOrderAddEdt = (props) => {
     }
     setValidated(true)
 
-    let dhNewOpening = new Date(form.dtOpening + ' ' + form.hrOpening)
-    dhNewOpening = formatDateDB(dhNewOpening)
-
+    let dhNewOpening = new Date(form.dtOpening + ' ' + form.hrOpening);
+    dhNewOpening = formatDateDB(dhNewOpening);
+    
     let dhNewClosed = null
     if (props.type === 2 && !isNUllorEmpty(form.dtClosed) && !isNUllorEmpty(form.hrClosed)) {
       dhNewClosed = new Date(form.dtClosed + ' ' + form.hrClosed)
@@ -249,22 +231,22 @@ export const ServiceOrderAddEdt = (props) => {
     }
 
     if (props.type === 1) {
-      let responseInsertOs = await reqInsertOrderService(dataNewOS)
+      let responseInsertOs = await reqInsertOrderService(dataNewOS);
       if (responseInsertOs.insert === true) {
         setVisibleSuccess(true)
         setTimeout(() => {
-          nav('/')
+          navigate('/')
         }, 3000)
       }
     } else {
       dataNewOS.idOs = props.idOs
       dataNewOS.idUserEmploye = 2
 
-      let returnUpdateOs = await reqPutOrderService(dataNewOS)
+      let returnUpdateOs = await reqPutOrderService(dataNewOS);
       if (returnUpdateOs.update === true) {
         setVisibleSuccess(true)
         setTimeout(() => {
-          nav('/')
+          navigate('/')
         }, 3000)
       }
     }
@@ -353,7 +335,7 @@ export const ServiceOrderAddEdt = (props) => {
         <CInputGroup className="mb-3">
           <CInputGroupText>Data de abertura</CInputGroupText>
           <CFormInput
-            readOnly={typeAccessP === 2 && readonly === false ? true : readonly}
+            readOnly={props.type === 2 && typeAccessP === 2 && readonly === false ? true : readonly}
             placeholder="Nome"
             value={form.dtOpening}
             type="date"
@@ -366,7 +348,7 @@ export const ServiceOrderAddEdt = (props) => {
         <CInputGroup className="mb-3">
           <CInputGroupText>Hora de abertura</CInputGroupText>
           <CFormInput
-            readOnly={typeAccessP === 2 && readonly === false ? true : readonly}
+            readOnly={ props.type === 2 && typeAccessP === 2 && readonly  === false ? true : readonly}
             placeholder="Hora de Abertura"
             type="time"
             value={form.hrOpening}

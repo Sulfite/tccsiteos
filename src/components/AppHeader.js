@@ -21,7 +21,7 @@ import UserActionsTypes from '../redux/User/actionTypes'
 
 const AppHeader = () => {
   const headerRef = useRef()
-  const nav = useNavigate()
+  const navigate = useNavigate()
   const { colorMode, setColorMode } = useColorModes('coreui-free-react-admin-template-theme')
 
   const dispatch = useDispatch()
@@ -39,8 +39,7 @@ const AppHeader = () => {
     dispatch({
       type: UserActionsTypes.LOGOUT,
     })
-    dispatch({ type: 'set', sidebarUnfoldable: !unfoldable })
-    return nav('/Login');
+    return navigate('/Login');
   }
 
   return (
