@@ -333,7 +333,7 @@ export const ServiceOrderAddEdt = (props) => {
         )}
 
         <CInputGroup className="mb-3">
-          <CInputGroupText>Data de abertura {typeAccessP+ " " +readonly}</CInputGroupText>
+          <CInputGroupText>Data de abertura</CInputGroupText>
           <CFormInput
             readOnly={props.type === 2 && typeAccessP === 2 && readonly === false ? true : readonly}
             placeholder="Nome"
