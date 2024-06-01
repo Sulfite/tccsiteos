@@ -31,7 +31,7 @@ const Login = () => {
   const [passwordUser, setPasswordUser] = useState();
 
   const [visible, setVisible] = useState(false);
-  const [reqError, setReqError] = useState({title: '', Message: ''});
+  const [reqError, setReqError] = useState({title: '', message: ''});
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -54,7 +54,7 @@ const Login = () => {
           })
           navigate('/dashboard');
       } else {
-          setReqError({title: returnLogin.title, Message: returnLogin.Message});
+          setReqError({title: returnLogin.title, message: returnLogin.message});
           setVisible(true);
       }
   };
@@ -124,7 +124,7 @@ const Login = () => {
             <CModalTitle id="LiveDemoExampleLabel">{reqError.title}</CModalTitle>
           </CModalHeader>
           <CModalBody>
-            <p>{reqError.Message}</p>
+            <p>{reqError.message}</p>
           </CModalBody>
           <CModalFooter>
             <CButton color="secondary" onClick={() => setVisible(false)}>

@@ -12,11 +12,7 @@ import {
   CSidebarToggler,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
-
 import { AppSidebarNav } from './AppSidebarNav'
-
-// import { logo } from 'src/assets/brand/logo'
-// import { sygnet } from 'src/assets/brand/sygnet'
 
 // sidebar nav config
 import navigation from '../_nav'
@@ -25,18 +21,16 @@ import { useNavigate } from 'react-router-dom'
 import { cilExitToApp } from '@coreui/icons'
 
 const AppSidebar = () => {
-  const nav = useNavigate()
+  const navigate = useNavigate()
   const dispatch = useDispatch()
   const unfoldable = useSelector((state) => state.sidebarUnfoldable)
   const sidebarShow = useSelector((state) => state.sidebarShow)
-  const currentUser = useSelector((state) => state.userReducer.currentUser)
 
   const handlerClickLogout = () => {
     dispatch({
       type: UserActionsTypes.LOGOUT,
     })
-    dispatch({ type: 'set', sidebarUnfoldable: !unfoldable })
-    nav('/Login')
+    navigate('/Login')
   }
 
   return (
@@ -52,10 +46,7 @@ const AppSidebar = () => {
     >
       <CSidebarHeader className="border-bottom">
         <CSidebarBrand className="headerSidebar">
-
-        <h1>Minhas O.S</h1>
-
-          {/* <CIcon customClassName="sidebar-brand-narrow" icon={sygnet} height={32} />  */}
+          <h1>Minhas O.S</h1>
         </CSidebarBrand>
         <CCloseButton
           className="d-lg-none"
@@ -73,4 +64,4 @@ const AppSidebar = () => {
   )
 }
 
-export default React.memo(AppSidebar)
+export default React.memo(AppSidebar);
