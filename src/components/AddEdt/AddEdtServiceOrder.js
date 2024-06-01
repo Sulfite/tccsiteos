@@ -76,7 +76,7 @@ export const ServiceOrderAddEdt = (props) => {
   //  1 - Add
   //  2 - edt
 
-  const nav = useNavigate()
+  const navigate = useNavigate()
   const [form, setForm] = useState(initialForm)
   const [formProduct, setFormProduct] = useState(initialFormProdut)
 
@@ -207,9 +207,9 @@ export const ServiceOrderAddEdt = (props) => {
     }
     setValidated(true)
 
-    let dhNewOpening = new Date(form.dtOpening + ' ' + form.hrOpening)
-    dhNewOpening = formatDateDB(dhNewOpening)
-
+    let dhNewOpening = new Date(form.dtOpening + ' ' + form.hrOpening);
+    dhNewOpening = formatDateDB(dhNewOpening);
+    
     let dhNewClosed = null
     if (props.type === 2 && !isNUllorEmpty(form.dtClosed) && !isNUllorEmpty(form.hrClosed)) {
       dhNewClosed = new Date(form.dtClosed + ' ' + form.hrClosed)
@@ -231,22 +231,22 @@ export const ServiceOrderAddEdt = (props) => {
     }
 
     if (props.type === 1) {
-      let responseInsertOs = await reqInsertOrderService(dataNewOS)
+      let responseInsertOs = await reqInsertOrderService(dataNewOS);
       if (responseInsertOs.insert === true) {
         setVisibleSuccess(true)
         setTimeout(() => {
-          nav('/')
+          navigate('/')
         }, 3000)
       }
     } else {
       dataNewOS.idOs = props.idOs
       dataNewOS.idUserEmploye = 2
 
-      let returnUpdateOs = await reqPutOrderService(dataNewOS)
+      let returnUpdateOs = await reqPutOrderService(dataNewOS);
       if (returnUpdateOs.update === true) {
         setVisibleSuccess(true)
         setTimeout(() => {
-          nav('/')
+          navigate('/')
         }, 3000)
       }
     }
