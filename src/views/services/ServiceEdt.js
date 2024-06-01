@@ -1,33 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import {
-  CButton,
   CCard,
-  CCardBody,
   CCardHeader,
   CCol,
-  CForm,
-  CFormInput,
-  CFormLabel,
-  CFormSelect,
-  CFormTextarea,
-  CInputGroup,
-  CInputGroupText,
   CRow,
 } from '@coreui/react'
-
-import { isAuthenticated } from '../../components/auth/auth';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ServiceAddEdt } from '../../components/AddEdt/AddEdtService';
 
 const ServiceEdt = () => {
-  const navigate = useNavigate();
   let { id } = useParams();
-
-  useEffect(() => {
-    if (!isAuthenticated()) {
-      navigate("/login");
-    }
-  }, []);
 
   return (
     <CRow className="justify-content-center">

@@ -6,18 +6,10 @@ import {
   CRow,
 } from '@coreui/react'
 import { UserAddEdt } from '../../components/AddEdt/AddEdtUser'
-import { isAuthenticated } from '../../components/auth/auth';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const UserEdt = () => {
-  const navigate = useNavigate();
   let { id } = useParams();
-  
-  useEffect(() => {
-    if (!isAuthenticated()) {
-      navigate("/login");
-    }
-  }, []);
 
   return (
     <CRow className="justify-content-center">

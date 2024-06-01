@@ -1,7 +1,6 @@
 import React, { Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { CContainer, CSpinner } from '@coreui/react'
-import PrivateRoute from './auth/PrivateRoute'
 
 // routes config
 import routes from '../routes'
@@ -12,7 +11,6 @@ const AppContent = () => {
       <Suspense fallback={<CSpinner color="primary" />}>
         <Routes>
           {routes.map((route, idx) => {
-            // console.log(route);
             return (
               route.element && (
                 <Route

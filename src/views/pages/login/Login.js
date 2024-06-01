@@ -34,7 +34,7 @@ const Login = () => {
   const [reqError, setReqError] = useState({title: '', Message: ''});
 
   const dispatch = useDispatch();
-  const nav = useNavigate();
+  const navigate = useNavigate();
 
   const handlerClickLogin = async (e) => {
       e.preventDefault();
@@ -52,7 +52,7 @@ const Login = () => {
                   name: returnLogin.name
               }
           })
-          nav('/dashboard');
+          navigate('/dashboard');
       } else {
           setReqError({title: returnLogin.title, Message: returnLogin.Message});
           setVisible(true);
@@ -102,8 +102,7 @@ const Login = () => {
                   <div>
                     <h2>Registrar-se</h2>
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                      tempor incididunt ut labore et dolore magna aliqua.
+                      Cadastre-se agora e confie seus veículos à melhor oficina da região. Experimente nosso serviço de excelência e mantenha seu carro em perfeito estado com a nossa equipe especializada!
                     </p>
                     <Link to="/register">
                       <CButton color="primary" className="mt-3" active tabIndex={-1}>
