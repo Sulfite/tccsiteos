@@ -1,24 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react';
 import {
   CCard,
   CCardHeader,
   CCol,
   CRow,
-} from '@coreui/react'
-
-import { isAuthenticated } from '../../components/auth/auth';
-import { useNavigate } from 'react-router-dom';
+} from '@coreui/react';
 import { EquipmentAddEdt } from '../../components/AddEdt/AddEdtEquipament';
 
 const EquipamentAdd = () => {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!isAuthenticated()) {
-      navigate("/login");
-    }
-  }, []);
-
   return (
     <CRow className="justify-content-center">
       <CCol md={12} lg={12} xl={12}>

@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import UserActionsTypes from "./actionTypes";
 
 const initialState = {
@@ -5,17 +6,18 @@ const initialState = {
 };
 
 const userReducer = (state = initialState, action) => {
+
+  // const navigate = useNavigate();
+
   // colocar switch posteriormente
     switch (action.type) {
         case UserActionsTypes.LOGIN:
-          console.log('aqui');
           localStorage.setItem('token', action.payload.token);
           return { ...state, currentUser: action.payload };
-          break;
         case UserActionsTypes.LOGOUT:
             localStorage.clear();
+            // navigate('/Login')
             return initialState;
-          break;
         case UserActionsTypes.UPPLAN:
             return { ...state, currentUser: action.payload };
           break;
