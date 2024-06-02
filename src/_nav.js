@@ -122,29 +122,29 @@ const _nav = [
     typeAccess: 2,
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
   },
-  {
-    component: CNavGroup,
-    name: 'Usuários',
-    to: '/user',
-    typeAccess: 2,
-    icon: <CIcon icon={cilUser} customClassName="nav-icon" />,
-    items: [
-      {
-        component: CNavItem,
-        icon:<CIcon icon={cilList} customClassName="nav-icon" />,
-        typeAccess: 2,
-        name: 'Lista',
-        to: '/user/listUsers',
-      },
-      {
-        component: CNavItem,
-        icon:<CIcon icon={cilUserPlus} customClassName="nav-icon" />,
-        typeAccess: 2,
-        name: 'Cadastro',
-        to: '/user/userAdd',
-      },
-    ],
-  },
+  // {
+  //   component: CNavGroup,
+  //   name: 'Usuários',
+  //   to: '/user',
+  //   typeAccess: 2,
+  //   icon: <CIcon icon={cilUser} customClassName="nav-icon" />,
+  //   items: [
+  //     {
+  //       component: CNavItem,
+  //       icon:<CIcon icon={cilList} customClassName="nav-icon" />,
+  //       typeAccess: 2,
+  //       name: 'Lista',
+  //       to: '/user/listUsers',
+  //     },
+  //     {
+  //       component: CNavItem,
+  //       icon:<CIcon icon={cilUserPlus} customClassName="nav-icon" />,
+  //       typeAccess: 2,
+  //       name: 'Cadastro',
+  //       to: '/user/userAdd',
+  //     },
+  //   ],
+  // },
 
   // typeAccess 3
   {
