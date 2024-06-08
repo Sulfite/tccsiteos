@@ -70,6 +70,7 @@ const DashboardEmployeCustomer = (props) => {
       dhClosed: formatDateDB(new Date()),
     }
     const returnOsClosed = reqClosedOrderService(dataOs)
+    console.log(returnOsClosed);
     returnOsClosed.then((response) => {
       if (response[0] > 0) {
         setListOs([])

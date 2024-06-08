@@ -279,6 +279,8 @@ export const ServiceOrderAddEdt = (props) => {
   }
 
   const handleOnClickProduct = () => {
+    console.log(productsAdd);
+    console.log(formProduct);
     setProductsAdd([...productsAdd, ...[formProduct]])
     setFormProduct(initialFormProdut)
     setVisibleModal(false)
@@ -554,7 +556,6 @@ export const ServiceOrderAddEdt = (props) => {
                 aria-label="Default select "
                 options={optionsProduct}
                 value={formProduct.ID_Product}
-                // onChange={(e) => setInputProduct({ idProduct: e.target.value})}
                 onChange={(e) => {
                   handlerOnChanged(e)
                 }}
